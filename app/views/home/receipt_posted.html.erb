@@ -1,0 +1,66 @@
+<% content_for :js do %>
+
+<script>
+
+
+  $(function () {
+	var obj = <%= raw(@response.to_json) == "null" ? ""  : raw(@response.to_json)  %>
+	//{a:1, 'b':'foo', c:[false,'false',null, 'null', {d:{e:1.3e5,f:'1.3e5'}}]};
+	var str = JSON.stringify(obj, undefined, 4);
+
+	$(".code").html(syntaxHighlight(str));
+//	output(syntaxHighlight(str));
+
+
+	});
+</script>
+
+
+
+<% end %>
+
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3>Email Triggered</h3>
+  </div>
+  <div class="prl-panel-content">
+   
+  
+  
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>API Response</h5>
+	  </div>
+	  <div class="prl-panel-content">
+			<% if raw(@response.to_json) != "null" %>
+			<pre class="code"></pre>
+			<% else %>
+			<p>Trigger was successful</p>
+			<% end %>
+			<p>A successful response has no content.</p>
+	  </div>
+	</div>
+
+
+  
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>Verify the receipt send</h5>
+	  </div>
+	  <div class="prl-panel-content">
+			<p>Log into the retailer portal <%= link_to "Retailer Portal", "http://retailers.ereceipts.co.uk", :target=>"_new"%> to see the receipts</p>
+	  </div>
+	</div>
+
+
+
+
+	
+
+
+  </div>
+</div>
+        
+

@@ -1,0 +1,94 @@
+<% content_for :js do %>
+
+<script>
+
+
+  $(function () {
+	var obj = <%= raw(@response.to_json) %>
+	 
+
+	//{a:1, 'b':'foo', c:[false,'false',null, 'null', {d:{e:1.3e5,f:'1.3e5'}}]};
+	var str = JSON.stringify(obj, undefined, 4);
+
+	$(".code").html(syntaxHighlight(str));
+//	output(syntaxHighlight(str));
+
+
+	});
+</script>
+
+
+
+<% end %>
+
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3>Trigger the email send</h3>
+  </div>
+  <div class="prl-panel-content">
+   
+  
+  
+
+
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>Step 1: take the API RESPONSE:</h5>
+	  </div>
+	  <div class="prl-panel-content">
+			<pre class="code"></pre>
+	  </div>
+	</div>
+
+
+		<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>STEP 2: Generate the POST URL</h5>
+	  </div>
+
+	  	<% 	
+	  		expires = (Time.now + 1.minute).to_i
+	  		signature = ereceipts_signature(expires, current_user.key, current_user.secret) 
+	  		url = "https://api.ereceipts.co.uk/email?expires=#{expires}&key=#{current_user.key}&signature=#{signature}"
+	  	%>
+	  <div class="prl-panel-content">
+	  	Parmeters
+			<ul>
+				<li>key: <%=current_user.key%></li>
+				<li>expires: <%=expires%></li>
+				<li>signature: <%=signature%></li>
+				<li> <%= link_to "HOW to Generate your signature here", "http://developer.ereceipts.co.uk/examples/signature.html", :target=>"_new"%></li>
+				<li>Url: <pre><%= url%></pre></li>	
+				<li>Content-Type: application/json</li>
+				<li>Body content: JSON (Use the JSON above)</li>	
+			</ul>
+	  </div>
+	</div>
+
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>STEP 3: Trigger Email</h5>
+	  </div>
+	  <div class="prl-panel-content">
+
+	  <%= form_tag home_api_email_post_path do %>
+	  	<%= hidden_field_tag "url", url %>
+	  	<%= hidden_field_tag "json", @response.to_json %>
+	  	<%= submit_tag "Trigger the email", :class=>"prl-button-primary" %>
+
+	  <% end %>
+
+			
+	  </div>
+	</div>
+
+
+	
+
+
+  </div>
+</div>
+        
+
