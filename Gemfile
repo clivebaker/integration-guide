@@ -30,6 +30,9 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'httparty'
 gem 'capistrano', '~> 3.2.0'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
