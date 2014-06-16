@@ -1,0 +1,71 @@
+<% content_for :js do %>
+
+<script>
+
+
+  $(function () {
+	var obj = <%= raw(@response.to_json) == "null" ? "null"  : raw(@response.to_json)  %>
+	
+	var obj2 = <%= raw(@response_get.to_json)  %>
+	//{a:1, 'b':'foo', c:[false,'false',null, 'null', {d:{e:1.3e5,f:'1.3e5'}}]};
+	var str = JSON.stringify(obj, undefined, 4);
+	var str2 = JSON.stringify(obj2, undefined, 4);
+
+	$(".code").html(syntaxHighlight(str));
+	$(".code2").html(syntaxHighlight(str2));
+
+
+
+	});
+</script>
+
+
+
+<% end %>
+
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3>User Created</h3>
+  </div>
+  <div class="prl-panel-content">
+   
+  
+   
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>API Response</h5>
+	  </div>
+	  <div class="prl-panel-content">
+			<% if raw(@response.to_json) != "null" %>
+			<pre class="code"></pre>
+			<% else %>
+			<p>Trigger was successful</p>
+			<% end %>
+			<p>A successful response has no content.</p>
+	  </div>
+	</div>
+
+
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>User now stored</h5>
+	  </div>
+	  <div class="prl-panel-content">
+			<pre class="code2"></pre>
+	  </div>
+	</div>
+
+
+ 
+
+
+
+	
+
+
+  </div>
+</div>
+        
+

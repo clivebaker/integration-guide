@@ -1,1 +1,82 @@
-post_user.html.erb
+<% content_for :js do %>
+
+
+
+<% end %>
+
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3>Creating / Updating a user</h3>
+  </div>
+  <div class="prl-panel-content">
+   
+  
+  
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>STEP 1: Get the user data</h5>
+	  </div>
+	  <div class="prl-panel-content">
+
+	  <%=form_tag home_post_user_2_path do %>
+	  	
+		  <div class="prl-form-group">
+		    <label class="required">Loyalty Card Number</label>
+		    <%=text_field_tag :identifier%>
+		  </div>
+		  <div class="prl-form-group">
+		    <label class="">Email</label>
+		    <%=text_field_tag :email%>
+		  </div>
+		  <div class="prl-form-group">
+		    <label class="">Title</label>
+		    <%=text_field_tag :title%>
+		  </div>
+		  <div class="prl-form-group">
+		    <label class="">First Name</label>
+		    <%=text_field_tag :first_name%>
+		  </div>
+		  		  <div class="prl-form-group">
+		    <label class="">Middle Name</label>
+		    <%=text_field_tag :middle_name%>
+		  </div>
+		  <div class="prl-form-group">
+		    <label class="">Last Name</label>
+		    <%=text_field_tag :last_name%>
+		  </div>
+
+		  <div class="prl-form-group">
+		    <label class="">Date of Birth</label>
+		    <%=text_field_tag :dob%>
+		    <p>Date of birth: yyyymmdd</p>
+		  </div>
+		  <div class="prl-form-group">
+		    <label class="">Gender</label>
+		    <%=text_field_tag :gender%>
+		    <p>permissible values: m | f</p>
+		  </div>
+<!-- 		  <div class="prl-form-group">
+		    <label class="">Opt Out</label>
+		    <%=text_field_tag :opt_out%>
+		    <p>array of strings</p>
+		  </div> -->
+		  <%=submit_tag "Continue", class: "prl-button-primary"%>
+
+	  <% end %>
+
+	  </div>
+	</div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+        
+

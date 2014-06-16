@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
 	
+include ApplicationHelper
+
 	def index
 	
 	end
@@ -76,6 +78,81 @@ class HomeController < ApplicationController
 	end
 
 	def post_user
+
+
+ 	
+		
+
+
+
+
+
+
+
+	end
+
+
+	def post_user_2
+
+			@identifier = params["identifier"]
+
+
+	
+
+			@user = {
+				  identifier: @identifier
+				  				
+				}
+
+				@user["properties"] = {}
+				@user["properties"]["opt-out="] = []
+				@user["properties"]["name"] = {} if !params["first_name"].blank? || !params["middle_name"].blank? || !params["last_name"].blank? || !params["gender"].blank?
+
+				@user["properties"]["email"] = params["email"] if !params["email"].blank?
+				@user["dob"] = params["dob"] if !params["dob"].blank?
+				@user["gender"] = params["gender"] if !params["gender"].blank?
+				@user["properties"]["name"]["first"] = params["first_name"] if !params["first_name"].blank?
+				@user["properties"]["name"]["middle"] = params["middle_name"] if !params["middle_name"].blank?
+				@user["properties"]["name"]["last"] = params["last_name"] if !params["last_name"].blank?
+				@user["properties"]["name"]["title"] = params["title"] if !params["title"].blank?
+
+
+			# @user = {
+			# 	  identifier: @identifier, 
+			# 	  properties: {
+			# 	    email: params["email"], 
+			# 	    name: {
+			# 	      first: params["first_name"], 
+			# 	      last: params["last_name"], 
+			# 	      title: params["title"]
+			# 	    }, 
+			# 	    "opt-out"=> [],
+			# 	    dob: params["dob"],
+			# 	    gender: params["gender"],
+			# 	  }
+			# 	}
+
+
+
+
+
+  	
+			
+	
+	end
+
+	def post_user_response
+
+
+		@url = params["url"]
+		@json = params["json"]
+		@response = HTTParty.patch(@url.to_str, :body =>@json, :headers => {'Content-Type' => 'application/json'})
+		
+
+		@response_get = HTTParty.get(@url.to_str, :headers => {'Content-Type' => 'application/json'})
+	
+
+
 		
 	end
 

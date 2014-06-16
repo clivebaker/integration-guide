@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get 'home/index'
 get 'home/post_receipt'
 get 'home/post_user'
+post 'home/post_user_2'
+post 'home/post_user_response'
+
+
+
 get 'home/post_loyalty'
 get 'home/get_receipts'
 get 'home/get_loyalty'
