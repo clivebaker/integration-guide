@@ -109,8 +109,8 @@ include ApplicationHelper
 				@user["properties"]["name"] = {} if !params["first_name"].blank? || !params["middle_name"].blank? || !params["last_name"].blank? || !params["gender"].blank?
 
 				@user["properties"]["email"] = params["email"] if !params["email"].blank?
-				@user["dob"] = params["dob"] if !params["dob"].blank?
-				@user["gender"] = params["gender"] if !params["gender"].blank?
+				@user["properties"]["dob"] = params["dob"] if !params["dob"].blank?
+				@user["properties"]["gender"] = params["gender"] if !params["gender"].blank?
 				@user["properties"]["name"]["first"] = params["first_name"] if !params["first_name"].blank?
 				@user["properties"]["name"]["middle"] = params["middle_name"] if !params["middle_name"].blank?
 				@user["properties"]["name"]["last"] = params["last_name"] if !params["last_name"].blank?
