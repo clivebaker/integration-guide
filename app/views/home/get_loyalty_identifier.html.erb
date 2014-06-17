@@ -1,0 +1,46 @@
+<% content_for :js do %>
+
+
+
+<% end %>
+
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3>Retrieving loyalty data</h3>
+  </div>
+  <div class="prl-panel-content">
+   
+  
+  
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>STEP 1: What is the Loyalty card number?</h5>
+	  </div>
+	  <div class="prl-panel-content">
+
+	  <%=form_tag home_get_loyalty_path do %>
+	  	
+		  <div class="prl-form-group">
+		    <label class="required">Loyalty Card Number</label>
+		    <%=text_field_tag :identifier, nil, :placeholder=>"Card Number"%>
+		  </div>
+		  <%=submit_tag "Continue", class: "prl-button-primary"%>
+
+	  <% end %>
+
+	  </div>
+	</div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+        
+

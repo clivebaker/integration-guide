@@ -1,0 +1,50 @@
+<% content_for :js do %>
+
+<script>
+
+
+  $(function () {
+	var obj = <%= raw(@response.to_json) %>
+	//{a:1, 'b':'foo', c:[false,'false',null, 'null', {d:{e:1.3e5,f:'1.3e5'}}]};
+	var str = JSON.stringify(obj, undefined, 4);
+
+	$(".code").html(syntaxHighlight(str));
+//	output(syntaxHighlight(str));
+
+
+	});
+</script>
+
+
+
+<% end %>
+
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3>Get loyalty information</h3>
+  </div>
+  <div class="prl-panel-content">
+   
+  
+  
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>STEP 3: use the loyalty information as required</h5>
+	  </div>
+	  <div class="prl-panel-content">
+			<pre class="code"></pre>
+	  </div>
+	</div>
+
+
+
+
+
+
+
+  </div>
+</div>
+        
+

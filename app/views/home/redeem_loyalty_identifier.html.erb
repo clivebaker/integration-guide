@@ -1,0 +1,54 @@
+<% content_for :js do %>
+
+
+
+<% end %>
+
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3>Redeem loyalty information (Use it in a transaction)</h3>
+  </div>
+  <div class="prl-panel-content">
+   
+  
+  
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>STEP 1: What is the Loyalty card number?</h5>
+	  </div>
+	  <div class="prl-panel-content">
+
+	  <%=form_tag home_redeem_loyalty_path do %>
+	  	
+		  <div class="prl-form-group">
+		    <label class="required">Loyalty Card Number</label>
+		    <%=text_field_tag :identifier, nil, :placeholder=>"Card Number"%>
+		  </div>
+		  <div class="prl-form-group">
+		    <label class="required">Rewards to subtract (e.g 2.13 equates to £2.13)</label>
+		    <%=text_field_tag :rewards, nil, :placeholder=>"2.13"%>
+		  </div>
+		  <div class="prl-form-group">
+		    <label class="required">Add redemption reason ("inflight transaction")</label>
+		    <%=text_field_tag :description, nil, :placeholder=>"inflight transaction"%>
+		  </div>
+		  <%=submit_tag "Continue", class: "prl-button-primary"%>
+
+	  <% end %>
+
+	  </div>
+	</div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+        
+

@@ -4,16 +4,22 @@ Rails.application.routes.draw do
   resources :items
 
   get 'home/index'
-get 'home/post_receipt'
+get 'home/post_receipt_identifier'
+post 'home/post_receipt'
 get 'home/post_user'
 post 'home/post_user_2'
 post 'home/post_user_response'
 
+get  'home/redeem_loyalty_identifier'
+post 'home/redeem_loyalty'
+post 'home/redeem_loyalty_2'
 
 
 get 'home/post_loyalty'
 get 'home/get_receipts'
-get 'home/get_loyalty'
+get 'home/get_loyalty_identifier'
+post 'home/get_loyalty'
+post 'home/get_loyalty_2'
 post "home/api_receipt_post"
 get "home/post_receipt_finish"
 
@@ -24,7 +30,7 @@ get "home/receipt_posted"
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'home#post_receipt'
+   root 'home#post_receipt_identifier'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

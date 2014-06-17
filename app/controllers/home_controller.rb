@@ -7,6 +7,8 @@ include ApplicationHelper
 	end
 
 	def get_loyalty
+
+		@identifier = params["identifier"]
 		
 	end
 
@@ -41,7 +43,7 @@ include ApplicationHelper
  
 
 		@receipt = {
-			identifier: current_user.email,
+			identifier: params["identifier"],
 			items: items_array, 
   			localtime: Time.now.iso8601, 
   			store_reference: 1, 
@@ -105,7 +107,7 @@ include ApplicationHelper
 				}
 
 				@user["properties"] = {}
-				@user["properties"]["opt-out="] = []
+				#@user["properties"]["opt-out-="] = ["receipts"]
 				@user["properties"]["name"] = {} if !params["first_name"].blank? || !params["middle_name"].blank? || !params["last_name"].blank? || !params["gender"].blank?
 
 				@user["properties"]["email"] = params["email"] if !params["email"].blank?
@@ -156,8 +158,42 @@ include ApplicationHelper
 		
 	end
 
+	def get_loyalty_2
+	
+
+		@url = params["url"]
+		@json = params["json"]
+		@response = HTTParty.get(@url.to_str, :headers => {'Content-Type' => 'application/json'})
+	
+
+
+
+	end
+
 	def post_loyalty
 		
+	end
+
+	def redeem_loyalty
+
+
+
+		@response = {}
+		@response["value-="] = params["rewards"].to_f
+		@response["description"] = params["description"]
+
+		@identifier = params["identifier"]
+
+	end
+
+	def redeem_loyalty_2
+		
+
+		@url = params["url"]
+		@json = params["json"]
+		@response = HTTParty.patch(@url.to_str, :body =>@json,  :headers => {'Content-Type' => 'application/json'})
+	
+	
 	end
 
 
