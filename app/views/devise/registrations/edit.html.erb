@@ -22,6 +22,10 @@
  <div><%= f.label :store %><br />
   <%= f.text_field :store %></div>
 
+   <div><%= f.label :loyalty_program %><br />
+  <%= f.text_field :loyalty_program %></div>
+
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

@@ -39,7 +39,7 @@
 	  	<% 	
 	  		expires = (Time.now + 1.minute).to_i
 	  		signature = ereceipts_signature(expires, current_user.key, current_user.secret) 
-	  		url = "https://api.ereceipts.co.uk/loyalty/11/identifiers/#{@identifier}?expires=#{expires}&key=#{current_user.key}&signature=#{signature}"
+	  		url = "https://api.ereceipts.co.uk/loyalty/#{current_user.loyalty_program}/identifiers/#{@identifier}?expires=#{expires}&key=#{current_user.key}&signature=#{signature}"
 	  	%>
 	  <div class="prl-panel-content">
 	  	Parmeters
