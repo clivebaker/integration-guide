@@ -61,7 +61,7 @@
 				<li>signature: <%=signature%></li>
 				<li><%= link_to "HOW to Generate your signature here", "http://developer.ereceipts.co.uk/examples/signature.html", :target=>"_new"%></li>
 				<li>Url: <pre><%= url%></pre></li>
-				<li>Please note that your loyalty program id is 11</li>	
+				<li>Please note that your loyalty program id is <%="#{current_user.loyalty_program}"%></li>	
 				<li>Content-Type: application/json</li>
 				<li>Body content: JSON (Use the JSON above)</li>	
 			</ul>
