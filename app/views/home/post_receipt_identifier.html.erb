@@ -16,14 +16,14 @@
   
 	<div class="prl-panel">
 	  <div class="prl-panel-title">
-	    <h5>STEP 1: What is the Loyalty card number?</h5>
+	    <h5>STEP 1: What is the Loyalty card number / Card number / Identifier?</h5>
 	  </div>
 	  <div class="prl-panel-content">
 
 	  <%=form_tag home_post_receipt_path do %>
 	  	
 		  <div class="prl-form-group">
-		    <label class="required">Loyalty Card Number</label>
+		    <label class="required">Loyalty Card Number / Card number / Identifier</label>
 		    <%=text_field_tag :identifier, nil, :placeholder=>"Card Number"%>
 		  </div>
 		  <%=submit_tag "Continue", class: "prl-button-primary"%>
