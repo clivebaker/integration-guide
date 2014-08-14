@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814083810) do
+ActiveRecord::Schema.define(version: 20140814084101) do
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140814083810) do
     t.integer  "loyalty_program"
     t.boolean  "loyalty_links"
     t.integer  "store_number"
-    t.integer  "retailer_name"
+    t.string   "retailer_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
