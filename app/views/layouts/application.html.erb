@@ -28,7 +28,7 @@
     <div class="prl-navigation-collapse">
       <ul class="prl-navigation-menu">
         <li><%= link_to "POST: Receipt", home_post_receipt_identifier_path%></li>
-        <% if current_user.id!=7 && current_user.id!=8  %>
+        <% if current_user.loyalty_links  %>
         <li><%= link_to "POST: User", home_post_user_path %></li>
         <li><%= link_to "GET: Loyalty", home_get_loyalty_identifier_path %></a></li>
         <li><%= link_to "Redeem Loyalty", home_redeem_loyalty_identifier_path %></a></li>
