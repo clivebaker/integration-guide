@@ -46,7 +46,7 @@ include ApplicationHelper
 			identifier: params["identifier"],
 			items: items_array, 
   			localtime: Time.now.iso8601, 
-  			store_reference: 1, 
+  			store_reference: current_user.store_number, 
   			total: total, 
   			transaction_id: "#{rand(100000 .. 999999)}", 
 		    vat: [
