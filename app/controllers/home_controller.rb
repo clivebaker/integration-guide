@@ -33,7 +33,7 @@ include ApplicationHelper
 					rate: 20,
 				},
 				properties: {
-					sku: item.sku,
+					product_code: item.sku,
 					other_data: item.other_data
 				},
 			}
@@ -41,20 +41,32 @@ include ApplicationHelper
 
 		total = items.map{|t| t.price}.inject(:+)
  
-
+		transaction_id = rand(100000 .. 999999)
 		@receipt = {
 			identifier: params["identifier"],
+			retailer: {name: current_user.retailer_name, vatno: nil},
+			till_uuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 			items: items_array, 
   			localtime: Time.now.iso8601, 
   			store_reference: current_user.store_number, 
   			total: total, 
-  			transaction_id: "#{rand(100000 .. 999999)}", 
+  			transaction_id: "#{transaction_id}", 
 		    vat: [
 				      {
 				        amount: ('%.2f' % [( (total / 1.2) * 100).round / 100.0]).to_f, 
 				        rate: 20
 				      }
-		    		]
+		    		],
+		    properties: {
+		    	transaction_details: {
+		    	date: "#{Time.now.strftime("%d/%m/%y")}",
+		    	till: "xxx",
+		    	tran: "#{transaction_id}",
+		    	store: "#{current_user.store_number}",
+		    	time: "#{Time.now.strftime("%H:%M")}"
+		    	},
+		    	salesperson: "till user name"
+		    }
 			}
 
 
