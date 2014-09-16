@@ -27,7 +27,11 @@
     </div>
     <div class="prl-navigation-collapse">
       <ul class="prl-navigation-menu">
+      <% if !current_user.post_examples  %>
         <li><%= link_to "POST: Receipt", home_post_receipt_identifier_path%></li>
+        <% else %>
+           <li><%= link_to "POST Examples", post_examples_path%></li>
+        <% end %>
         <% if current_user.loyalty_links  %>
         <li><%= link_to "POST: User", home_post_user_path %></li>
         <li><%= link_to "GET: Loyalty", home_get_loyalty_identifier_path %></a></li>

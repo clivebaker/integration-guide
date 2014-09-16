@@ -1,0 +1,85 @@
+<% receipt = JSON.parse(@post_example.json_string)%>
+<% receipt["transaction_id"] = "#{receipt["transaction_id"]}-temp#{rand(100000 .. 999999)}" 
+
+
+%>
+<% content_for :js do %>
+
+<script>
+
+
+  $(function () {
+	var obj = <%= raw(receipt.to_json) %>
+	var str = JSON.stringify(obj, undefined, 4);
+
+	$(".code").html(syntaxHighlight(str));
+	});
+</script>
+<% end %>
+
+
+<div class="prl-panel">
+  <div class="prl-panel-title">
+    <h3><%= @post_example.name %></h3>
+  </div>
+  <div class="prl-panel-content">
+
+  <p id="notice"><%= notice %></p>
+
+
+
+	<div class="prl-panel">
+	  <div class="prl-panel-title">
+	    <h5>JSON receipt <br/><br/>PLEASE NOTE:<br/>1. a random number has been added to the transaction id "-temp######". This is to allow posting of transactions as transaction ID are required to be unique<br/>
+	    2. The store number used id 1.  This is the reference for the Test till</h5>
+	  </div>
+	  <div class="prl-panel-content">
+			<pre class="code"></pre>
+			
+	  </div>
+	</div>
+
+
+	  	<% 	
+	  		expires = (Time.now + 1.minute).to_i
+	  		signature = ereceipts_signature(expires, current_user.key, current_user.secret) 
+	  		url = "https://api.ereceipts.co.uk/receipts?expires=#{expires}&key=#{current_user.key}&signature=#{signature}"
+	  	%>
+
+
+	<div class="prl-panel">
+
+	  <div class="prl-panel-content">
+
+	  <%= form_tag post_example_api_receipt_post_path(@post_example.id) do %>
+	  	<%= hidden_field_tag "url", url %>
+	  	<%= hidden_field_tag "json", receipt.to_json %>
+	  	<%= submit_tag "POST the receipt", :class=>"prl-button-primary" %>
+
+	  <% end %>
+
+			
+	  </div>
+	</div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+

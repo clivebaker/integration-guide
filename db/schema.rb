@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814084101) do
+ActiveRecord::Schema.define(version: 20140916105751) do
 
   create_table "items", force: true do |t|
     t.string   "name"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20140814084101) do
     t.datetime "updated_at"
     t.string   "sku"
     t.string   "other_data"
+  end
+
+  create_table "post_examples", force: true do |t|
+    t.string   "name"
+    t.text     "json_string"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -45,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140814084101) do
     t.boolean  "loyalty_links"
     t.integer  "store_number"
     t.string   "retailer_name"
+    t.boolean  "post_examples"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

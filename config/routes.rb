@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :post_examples do
+    
+    post "api_receipt_post"
+    get "post_receipt_response"
+
+
+  end
+
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :items
@@ -30,7 +38,8 @@ get "home/receipt_posted"
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'home#post_receipt_identifier'
+   root 'home#index'
+# root 'home#post_receipt_identifier'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
