@@ -41,7 +41,7 @@
 
 
 	  	<% 	
-	  		expires = (Time.now + 1.minute).to_i
+	  		expires = (Time.now + 1.day).to_i
 	  		signature = ereceipts_signature(expires, current_user.key, current_user.secret) 
 	  		url = "https://api.ereceipts.co.uk/receipts?expires=#{expires}&key=#{current_user.key}&signature=#{signature}"
 	  	%>
