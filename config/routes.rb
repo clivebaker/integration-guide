@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     post "api_receipt_post"
     get "post_receipt_response"
 
+  collection do
+ 
+    get "custom_json"
+      end
+
 
   end
 

@@ -31,6 +31,7 @@
         <li><%= link_to "POST: Receipt", home_post_receipt_identifier_path%></li>
         <% else %>
            <li><%= link_to "POST Examples", post_examples_path%></li>
+           <li><%= link_to "Custom POST", custom_json_post_examples_path%></li>
         <% end %>
         <% if current_user.loyalty_links  %>
         <li><%= link_to "POST: User", home_post_user_path %></li>

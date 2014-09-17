@@ -63,14 +63,16 @@ class PostExamplesController < ApplicationController
 
 
 
-    def api_receipt_post
+  def api_receipt_post
     @url = params["url"]
     @json = params["json"]
     @response = HTTParty.post(@url.to_str, :body =>@json, :headers => {'Content-Type' => 'application/json'})
     render "post_examples/post_receipt_response"
   end
 
-
+  def custom_json
+    
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
