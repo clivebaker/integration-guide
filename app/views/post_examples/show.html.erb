@@ -1,8 +1,16 @@
 <% receipt = JSON.parse(@post_example.json_string)%>
-<% receipt["transaction_id"] = "#{receipt["transaction_id"]}-temp#{rand(100000 .. 999999)}" 
+<% receipt["transaction_id"] = "#{receipt["transaction_id"]}-temp#{rand(100000 .. 999999)}" %>
+<% receipt["identifier"] = "" %>
+<% receipt["localtime"] = Time.new.iso8601 %>
 
 
-%>
+
+
+
+
+
+
+
 <% content_for :js do %>
 
 <script>
@@ -11,8 +19,21 @@
   $(function () {
 	var obj = <%= raw(receipt.to_json) %>
 	var str = JSON.stringify(obj, undefined, 4);
-
 	$(".code").html(syntaxHighlight(str));
+
+
+
+	$( "#identifier" ).keyup(function() {
+  		//alert(this.value);
+		obj.identifier = this.value
+		var str = JSON.stringify(obj, undefined, 4);
+		$(".code").html(syntaxHighlight(str));
+		$("#json-form").attr("value", JSON.stringify(obj))
+
+	});
+
+
+
 	});
 </script>
 <% end %>
@@ -31,8 +52,12 @@
 	<div class="prl-panel">
 	  <div class="prl-panel-title">
 	    <h5>JSON receipt <br/><br/>PLEASE NOTE:<br/>1. a random number has been added to the transaction id "-temp######". This is to allow posting of transactions as transaction ID are required to be unique<br/>
-	    2. The store number used id 1.  This is the reference for the Test till</h5>
+	    2. The store number used id 1.  This is the reference for the Test till.<br/>
+	    3. If there is no email address then please pass the identifier key with an empty string.</h5>
 	  </div>
+
+	  <input type="text" id="identifier" placeholder="Identifier"/>
+
 	  <div class="prl-panel-content">
 			<pre class="code"></pre>
 			
@@ -53,7 +78,7 @@
 
 	  <%= form_tag post_example_api_receipt_post_path(@post_example.id) do %>
 	  	<%= hidden_field_tag "url", url %>
-	  	<%= hidden_field_tag "json", receipt.to_json %>
+	  	<%= hidden_field_tag "json", receipt.to_json, :id=>"json-form" %>
 	  	<%= submit_tag "POST the receipt", :class=>"prl-button-primary" %>
 
 	  <% end %>
