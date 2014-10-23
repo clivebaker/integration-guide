@@ -30,7 +30,9 @@
       <% if !current_user.post_examples  %>
         <li><%= link_to "POST: Receipt", home_post_receipt_identifier_path%></li>
         <% else %>
+           <% if current_user.id == 11 %>
            <li><%= link_to "POST Examples", post_examples_path%></li>
+           <% end %>
            <li><%= link_to "Custom POST", custom_json_post_examples_path%></li>
         <% end %>
         <% if current_user.loyalty_links  %>
